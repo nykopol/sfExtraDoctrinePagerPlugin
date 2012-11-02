@@ -23,14 +23,14 @@ Installation
  * Place source files in you plugins/ directory in a sfExtraDoctrinePagerPlugin/ folder.
  * Activate the plugin in config/ProjectConfiguration.class.php
    <pre>class ProjectConfiguration extends sfProjectConfiguration
-{
-	public function setup()
 	{
-		$this->enablePlugins(array(
-			'sfExtraDoctrinePagerPlugin', 
-			...
-		));
-	}
-}</pre>
+		public function setup()
+		{
+			$this->enablePlugins(array(
+				'sfExtraDoctrinePagerPlugin', 
+				...
+			));
+		}
+	}</pre>
  * Then build pager classes :
 	<pre>php symfony doctrine:build-pagers</pre>
