@@ -28,15 +28,7 @@ class sfWidgetPagerColumnCallback extends sfWidgetPagerColumn
 		
 		$content = $this->getContent($name, $value);
 		
-		/**
-		* TODO : quand la valeur d'un attribut est null il ne faut pas la remplacer par l'objet !
-		* ça pose problème pour la gestion des libelles vide
-		*/
-		if(null === $content){
-			$content = $value;
-		}
-		
-		return call_user_func($this->getOption('callback'), $content, $value);
+		return call_user_func($this->getOption('callback'), $value, $content);
 		
 	}
 	
