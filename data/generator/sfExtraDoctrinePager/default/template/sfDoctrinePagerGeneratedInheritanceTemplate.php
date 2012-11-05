@@ -29,6 +29,10 @@ You should have received a copy of the GNU Lesser General Public License
 abstract class Base<?php echo $this->modelName ?>Pager extends <?php echo $this->getPagerClassToExtend().PHP_EOL ?>
 {
 
+	public function __construct($class = '<?php echo $this->modelName ?>', $maxPerPage = 10, $options = array()) {
+		return parent::__construct($class, $maxPerPage, $options);
+	}
+
 	protected function setupInheritance(){
 		parent::setupInheritance();
 		
