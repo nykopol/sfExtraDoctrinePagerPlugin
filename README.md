@@ -34,3 +34,10 @@ Installation
 	}</pre>
  * Then build pager classes :
 	<pre>php symfony doctrine:build-pagers</pre>
+
+Documentation
+-------------
+
+Get started : http://www.gow.f/sfextradoctrinepagerplugin
+
+Documentation API : http://www.gow.fr/sfExtraDoctrinePagerPlugin/docs/index.html
