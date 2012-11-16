@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * This file is part of the sfExtraDoctrinePagerPlugin package.
  * (c) 2012 Desmyter Johan <desmyter.johan@gmail.com>
  *
@@ -8,7 +8,7 @@
  */
 
 /**
- * sfExtraDoctrinePager is the main class of pagers
+ * sfExtraDoctrinePager is the main logic class of pagers
  *
  * @package    sfExtraDoctrinePagerPlugin
  * @author     Desmyter Johan <desmyter.johan@gmail.com>
@@ -17,25 +17,32 @@ class sfExtraDoctrinePager extends sfDoctrinePager
 {
 	
 	/**
-	 *
-	 * @var sfWidgetPagerSchema instance of sfWidgetPagerSchema
+	 * Widget Schema instance
+	 * @var sfWidgetPagerSchema
 	 */
 	protected $widgetSchema    = null;
 	
 	/**
-	 *
-	 * @var boolean init() method has been called or not
+	 * Set to true after init() method
+	 * @var boolean
 	 */
 	protected $initialized = false;
 	
 	/**
-	 *
-	 * @var array() Options du pager 
+	 * Pager options
+	 * @var array 
 	 */
 	protected $options = array();
+
+	/**
+	 * Required pager options
+	 * @var array
+	 */
 	protected $requiredOptions = array();
 	
-	
+	/**
+	 *
+	 */
 	protected $foreignKeys;
 	protected $sort;
 	protected $urlBase;
@@ -45,7 +52,12 @@ class sfExtraDoctrinePager extends sfDoctrinePager
 	
 	
 	
-	
+	/**
+	 * Construct method
+	 * @param string $class Doctrine class name
+	 * @param integer $maxPerPage Number of row per page
+	 * @param array $options array of options
+	 */
 	public function __construct($class, $maxPerPage = 10, $options = array()) {
 		
 		$this->widgetSchema    = new sfWidgetPagerSchema();
@@ -71,19 +83,31 @@ class sfExtraDoctrinePager extends sfDoctrinePager
 	 */
 	
 	
+	/**
+	 * Return instance of widget schema
+	 *
+	 * @return sfWidgetPagerSchema
+	 */
 	public function getWidgetSchema() {
 		return $this->widgetSchema;
 	}
 
-	public function setWidgetSchema($widgetSchema) {
-		if(!$widgetSchema instanceof sfWidgetPagerSchema){
-			throw new InvalidArgumentException("Widget schema must be an instance of sfWidgetPagerSchema");
-		}
-		
+	/**
+	 * Set new widget schema
+	 *
+	 * @param sfWidgetPagerSchema $widgetSchema new widget schema
+	 */
+	public function setWidgetSchema(sfWidgetPagerSchema $widgetSchema) {
 		$this->widgetSchema = $widgetSchema;
 		$this->widgetSchema->setPager( $this );
 	}
 
+	/**
+	 * Define columns to display
+	 *
+	 * @param array $columns list of columns to display
+	 * @param bool $ordered if set to TRUE order of $columns is used for pager
+	 */
 	public function useColumns(array $columns, $ordered = true){
 		return $this->widgetSchema->useColumns($columns, $ordered);
 	}
@@ -96,12 +120,21 @@ class sfExtraDoctrinePager extends sfDoctrinePager
 	 * ------------------------
 	 */
 	
+	/**
+	 * Used to echo pager
+	 * @return string HTML code of pager
+	 */
 	public function __toString(){
-		
 		return $this->render();
-		
 	}
-	
+
+	/**
+	 * Render complet pager
+	 *
+	 * @param string $name
+	 * @param array $attributes
+	 * @param array $errors
+	 */
 	public function render($name = '', $attributes = array(), $errors = array()){
 		
 		if(!$this->initialized){

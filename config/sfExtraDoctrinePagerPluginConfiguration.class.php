@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * This file is part of the sfExtraDoctrinePagerPlugin package.
  * (c) 2012 Desmyter Johan <desmyter.johan@gmail.com>
  *
@@ -10,12 +10,17 @@
 /**
  * sfExtraDoctrinePagerPluginConfiguration is the configuration class
  *
- * @package    sfExtraDoctrinePagerPlugin
- * @author     Desmyter Johan <desmyter.johan@gmail.com>
+ * @package sfExtraDoctrinePagerPlugin
+ * @author Desmyter Johan <desmyter.johan@gmail.com>
  */
 class sfExtraDoctrinePagerPluginConfiguration extends sfPluginConfiguration
 {
-	
+
+	/**
+	 * Initialize the plugin
+	 * 
+	 * @return void
+	 */	
 	public function initialize(){
 		
 		if(!sfConfig::get('extra_doctrine_plugin_lib_dir')){
@@ -25,7 +30,7 @@ class sfExtraDoctrinePagerPluginConfiguration extends sfPluginConfiguration
 	}
 	
 	/**
-	* Returns options for the Doctrine schema builder.
+	* Returns options for Doctrine schema builder.
 	*
 	* @return array
 	*/
@@ -48,6 +53,9 @@ class sfExtraDoctrinePagerPluginConfiguration extends sfPluginConfiguration
 		return $options;
 	}
 
+	 /**
+	 * Return CLI config
+	 */
 	public function getCliConfig(){
 		$config = array(
 			'data_fixtures_path' => array_merge(array(sfConfig::get('sf_data_dir').'/fixtures'), $this->configuration->getPluginSubPaths('/data/fixtures')),
