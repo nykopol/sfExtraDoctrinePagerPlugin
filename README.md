@@ -38,6 +38,6 @@ Installation
 Documentation
 -------------
 
-Get started : http://www.gow.f/sfextradoctrinepagerplugin
+Get started : http://www.gow.fr/sfextradoctrinepagerplugin
 
 Documentation API : http://www.gow.fr/sfExtraDoctrinePagerPlugin/docs/index.html
