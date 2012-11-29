@@ -125,7 +125,17 @@ class sfExtraDoctrinePager extends sfDoctrinePager
 	 * @return string HTML code of pager
 	 */
 	public function __toString(){
-		return $this->render();
+		
+		try{
+			$render = $this->render();
+		}catch(Exception $e){
+			if(sfConfig::get('sf_debug'))
+				return $e->getMessage();
+			else
+				throw $e;
+		}
+		
+		return $render;
 	}
 
 	/**
