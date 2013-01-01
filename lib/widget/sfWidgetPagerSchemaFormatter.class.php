@@ -115,7 +115,7 @@ abstract class sfWidgetPagerSchemaFormatter
 		
 	
   
-	public function formatRowTr($content){
+	public function formatRowTr($content, $object){
 		return strtr($this->getFormatRowTr(), array('%content%' => $content));
 	}
   

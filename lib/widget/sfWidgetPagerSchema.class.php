@@ -322,7 +322,7 @@ class sfWidgetPagerSchema extends sfWidgetPager implements ArrayAccess
 			$headers[] = $content;
 		}
 		
-		return $this->formatter->formatRowTr( implode("\n", $headers) );
+		return $this->formatter->formatRowTr( implode("\n", $headers), $values );
 		
 	}
 	
@@ -346,7 +346,7 @@ class sfWidgetPagerSchema extends sfWidgetPager implements ArrayAccess
 			$footers[] = $content;
 		}
 		
-		return $this->formatter->formatRowTr( implode("\n", $footers) );
+		return $this->formatter->formatRowTr( implode("\n", $footers), $values );
 		
 	}
 	
@@ -362,7 +362,7 @@ class sfWidgetPagerSchema extends sfWidgetPager implements ArrayAccess
 			foreach($values as $row){
 				$widgetAttributes = isset($attributes[$name]) ? $attributes[$name] : array();
 				$rendered = $this->_render('row', $name, $row, $attributes, $errors);
-				$bodys[] = $this->formatter->formatRowTr( $rendered );
+				$bodys[] = $this->formatter->formatRowTr( $rendered, $row );
 			}
 			
 		}
@@ -397,7 +397,7 @@ class sfWidgetPagerSchema extends sfWidgetPager implements ArrayAccess
 	
 	public function renderNoResults($name, $values = null, $attributes = array(), $errors = array()){
 		
-		return $this->formatter->formatRowTr('<td colspan="'.$this->getNbColumns().'"><p class="infotip">'.$this->noResultLabel.'</p></td>');
+		return $this->formatter->formatRowTr('<td colspan="'.$this->getNbColumns().'"><p class="infotip">'.$this->noResultLabel.'</p></td>', $values);
 		
 	}
 	
