@@ -38,6 +38,11 @@ class sfWidgetPagerSchema extends sfWidgetPager implements ArrayAccess
 	 * @var string Type d'ordre (asc|desc) 
 	 */
 	protected $sort_type;
+	/**
+	 * @var string format d'url pour header sort 
+	 */
+	protected $url_format;
+	
 	
 	
 	/**

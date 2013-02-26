@@ -300,6 +300,9 @@ class sfExtraDoctrinePager extends sfDoctrinePager
 		return $this->classTable;
 	}
 	
+	public function getNbResults(){
+		return $this->getQuery()->count();
+	}
 	
 	/*
 	 * ------------------------
