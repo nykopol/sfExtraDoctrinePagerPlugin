@@ -41,8 +41,10 @@ class sfExtraDoctrinePager extends sfDoctrinePager
 	protected $requiredOptions = array();
 	
 	/**
-	 *
+	 * Results defined directly instead of results from SQL query
 	 */
+	protected $results;
+	
 	protected $foreignKeys;
 	protected $sort;
 	protected $urlBase;
@@ -302,6 +304,33 @@ class sfExtraDoctrinePager extends sfDoctrinePager
 	
 	public function getNbResults(){
 		return $this->getQuery()->count();
+	}
+	
+	/**
+	* Get results for the pager instance
+	*
+	* @param integer $hydrationMode Doctrine::HYDRATE_* constants
+	* @return mixed Doctrine_Collection/array
+	*/
+	public function getResults($hydrationMode = Doctrine::HYDRATE_RECORD){
+
+		if($this->results){
+			return $this->results;
+		}else{
+			return parent::getResults($hydrationMode);
+		}
+	}
+	
+	/**
+	 * Define directly objects to display (no more SQL query) 
+	 * @param Doctrine_Collection $results
+	 */
+	public function setResults(Doctrine_Collection $results){
+		$this->setNbResults(count($results));
+		$this->setPage(0);
+		$this->setMaxPerPage(0);
+		$this->setLastPage(0);
+		$this->results = $results;
 	}
 	
 	/*
