@@ -79,7 +79,7 @@ class sfExtraDoctrinePagerGenerator extends sfGenerator
 
     $pluginPaths = $this->generatorManager->getConfiguration()->getAllPluginPaths();
 
-    // create a form class for every Doctrine class
+    // create a pager class for every Doctrine class
     foreach ($models as $model)
     {
       $this->table = Doctrine_Core::getTable($model);
@@ -103,7 +103,7 @@ class sfExtraDoctrinePagerGenerator extends sfGenerator
 
       if ($isPluginModel)
       {
-        $pluginBaseDir = $pluginPaths[$pluginName].'/lib/form/doctrine';
+        $pluginBaseDir = $pluginPaths[$pluginName].'/lib/pager/doctrine';
         if (!file_exists($classFile = $pluginBaseDir.'/Plugin'.$model.'Pager.class.php'))
         {
             if (!is_dir($pluginBaseDir))
@@ -468,9 +468,9 @@ class sfExtraDoctrinePagerGenerator extends sfGenerator
   }
 
   /**
-   * Filter out models that have disabled generation of form classes
+   * Filter out models that have disabled generation of pager classes
    *
-   * @return array $models Array of models to generate forms for
+   * @return array $models Array of models to generate pagers for
    */
   protected function filterModels($models)
   {
@@ -545,7 +545,7 @@ class sfExtraDoctrinePagerGenerator extends sfGenerator
   }
 
   /**
-   * Get the name of the form class to extend based on the inheritance of the model
+   * Get the name of the pager class to extend based on the inheritance of the model
    *
    * @return string
    */
