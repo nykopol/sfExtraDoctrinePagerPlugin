@@ -184,6 +184,11 @@ class sfExtraDoctrinePager extends sfDoctrinePager
 		
 		$this->configure();
 		
+		if($this->getOption('configure', false)){
+		   $configure_method = $this->getOption('configure');
+		   $this->$configure_method();
+		}
+		
 		if(!$this->query)
 			$this->buildQuery();
 		
