@@ -43,7 +43,7 @@ abstract class Base<?php echo $this->modelName ?>Pager extends <?php echo $this-
 		$this->widgetSchema['<?php echo $this->underscore($relation['alias']) ?>'] = new sfWidgetPagerColumnDoctrineRelation(array(
 				'model' => '<?php echo $relation['table']->getOption('name') ?>', 
 				'local' => '<?php echo $relation->getLocalColumnName() ?>', 
-				'foreign' => '<?php echo $relation->getForeignColumnName() ?>' ))
+				'foreign' => '<?php echo $relation->getForeignColumnName() ?>' ));
 <?php endforeach; ?>
 
 	}
