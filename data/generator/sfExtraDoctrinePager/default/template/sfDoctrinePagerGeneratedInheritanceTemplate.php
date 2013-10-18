@@ -33,8 +33,8 @@ abstract class Base<?php echo $this->modelName ?>Pager extends <?php echo $this-
 		return parent::__construct($class, $maxPerPage, $options);
 	}
 
-	protected function setupInheritance(){
-		parent::setupInheritance();
+	public function setup(){
+		parent::setup();
 		
 <?php foreach ($this->getColumns() as $column): ?>
 		$this->widgetSchema['<?php echo $column->getFieldName() ?>'] = new <?php echo $this->getWidgetClassForColumn($column) ?>(<?php echo $this->getWidgetOptionsForColumn($column) ?>);
