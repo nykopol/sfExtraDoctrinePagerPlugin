@@ -31,12 +31,11 @@ class sfWidgetPagerColumn extends sfWidgetPager
 	
 	public function renderHeader($name, $value = null, $attributes = array(), $errors = array()){
 
-		return $this->renderContentTag('th', $this->getGenereatedLabel($name), $attributes);
+		return $this->renderContentTag('th', __($this->getGenereatedLabel($name)), $attributes);
 		
 	}
 	
 	public function renderSortableHeader($name, $value = null, $attributes = array(), $errors = array()){
-		
 		$link = $this->renderSortableLink($name, $value, $attributes, $errors);
 		
 		return $this->renderContentTag('th', $link, $attributes);
@@ -45,7 +44,7 @@ class sfWidgetPagerColumn extends sfWidgetPager
 	
 	public function renderFooter($name, $value = null, $attributes = array(), $errors = array()){
 		
-		return $this->renderContentTag('th', $this->getGenereatedLabel($name), $attributes);
+		return $this->renderContentTag('th', __($this->getGenereatedLabel($name)), $attributes);
 		
 	}
 	
@@ -72,7 +71,7 @@ class sfWidgetPagerColumn extends sfWidgetPager
 		
 		$url = strtr($format_url, array('%sort%' => $name, '%sort_type%' => ($name == $sort ? ($sort_type == 'asc' ? 'desc' : 'asc') : 'asc')));
 		$url = url_for( $url );
-		$anchor = $this->getGenereatedLabel($name);
+		$anchor = __($this->getGenereatedLabel($name));
 		
 		return $this->getParent()->getFormatter()->formatSortLink($url, $anchor, $sort, $sort_type, $active);
 		
