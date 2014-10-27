@@ -1,0 +1,17 @@
+{
+    "name": "nykopol/sf-extra-doctrine-pager-plugin",
+    "type": "symfony1-plugin",
+    "description": "This plugin aimed to build pagers in the same way as forms",
+    "license": "GNU LGPL 3",
+    "authors": [
+        {
+            "name": "Johan Desmyter",
+            "email": "johan@etic.yt",
+            "role": "Creator"
+        }
+    ],
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
+
